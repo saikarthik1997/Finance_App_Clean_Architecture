@@ -5,8 +5,12 @@ class SignInPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Sign In Page View"),
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          child: Text("Sign In Page View"),
+        ),
+      ),
     );
   }
 }

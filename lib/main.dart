@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:mms_assignment/common/strings.dart';
+import 'package:mms_assignment/common/values/strings.dart';
 import 'package:mms_assignment/routes/app_pages.dart';
 import 'package:mms_assignment/routes/app_routes.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: CommonStrings.appName,
       getPages: AppPages.pageList,
-      initialRoute: AppRoutes.signUp,
+      initialRoute: AppRoutes.welcome,
     );
   }
 }
