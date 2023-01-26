@@ -11,20 +11,32 @@ class HomePageView extends StatelessWidget {
     return GetBuilder<HomePageController>(builder: (controller) {
       return Scaffold(
         bottomNavigationBar: SafeArea(
-          child: TabBar(
-            controller: controller.tabController,
-            unselectedLabelColor: Colors.grey,
-            indicator: const BoxDecoration(
-                border: Border(
-              top: BorderSide(color: AppColors.primaryColor, width: 5.0),
-            )),
-            labelColor: AppColors.primaryColor,
-            onTap: (index) {},
-            tabs: const [
-              Tab(icon: Icon(Icons.menu_rounded)),
-              Tab(icon: Icon(Icons.piano)),
-              Tab(icon: Icon(Icons.car_rental_rounded)),
-              Tab(icon: Icon(Icons.settings_rounded)),
+          child: Stack(
+            children: [
+              Positioned(
+                top: 2,
+                child: Container(
+                  height: 1.0,
+                  width: Get.width,
+                  color: Colors.black,
+                ),
+              ),
+              TabBar(
+                controller: controller.tabController,
+                unselectedLabelColor: Colors.grey,
+                indicator: const BoxDecoration(
+                    border: Border(
+                  top: BorderSide(color: AppColors.primaryColor, width: 5.0),
+                )),
+                labelColor: AppColors.primaryColor,
+                onTap: (index) {},
+                tabs: const [
+                  Tab(icon: Icon(Icons.menu_rounded)),
+                  Tab(icon: Icon(Icons.piano)),
+                  Tab(icon: Icon(Icons.car_rental_rounded)),
+                  Tab(icon: Icon(Icons.settings_rounded)),
+                ],
+              ),
             ],
           ),
         ),

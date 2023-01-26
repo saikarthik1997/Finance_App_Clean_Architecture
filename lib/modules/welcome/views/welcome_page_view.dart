@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mms_assignment/common/values/app_colors.dart';
 import 'package:mms_assignment/common/widgets/buttons.dart';
+import 'package:mms_assignment/modules/welcome/controllers/welcome_page_controller.dart';
 
 class WelcomePageView extends StatelessWidget {
   const WelcomePageView({super.key});
@@ -38,15 +40,21 @@ class WelcomePageView extends StatelessWidget {
               ),
               Expanded(
                 flex: 1,
-                child: Column(
-                  children: [
-                    PrimaryButton(buttonText: "Open an Account", onTap: () {}),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    SecondaryButton(buttonText: "Sign In", onTap: () {}),
-                  ],
-                ),
+                child: GetBuilder<WelcomePageController>(builder: (controller) {
+                  return Column(
+                    children: [
+                      PrimaryButton(
+                          buttonText: "Open an Account",
+                          onTap: controller.onOpenAccountButtonPress),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      SecondaryButton(
+                          buttonText: "Sign In",
+                          onTap: controller.onSignInButtonPress),
+                    ],
+                  );
+                }),
               )
             ],
           ),
