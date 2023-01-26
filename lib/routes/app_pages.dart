@@ -5,6 +5,8 @@ import 'package:mms_assignment/modules/sign_in/bindings/sign_in_bindings.dart';
 import 'package:mms_assignment/modules/sign_in/views/sign_in_page_view.dart';
 import 'package:mms_assignment/modules/sign_up/bindings/sign_up_bindings.dart';
 import 'package:mms_assignment/modules/sign_up/views/sign_up_page_view.dart';
+import 'package:mms_assignment/modules/welcome/bindings/welcome_page_bindings.dart';
+import 'package:mms_assignment/modules/welcome/views/welcome_page_view.dart';
 import 'package:mms_assignment/routes/app_routes.dart';
 
 class AppPages {
@@ -23,6 +25,11 @@ class AppPages {
       name: AppRoutes.signUp,
       page: () => const SignUpPageView(),
       binding: SignUpBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.welcome,
+      page: () => const WelcomePageView(),
+      binding: WelcomePageBindings(),
     ),
   ];
 }
