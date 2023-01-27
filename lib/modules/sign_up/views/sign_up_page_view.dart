@@ -94,7 +94,9 @@ class SignUpPageView extends StatelessWidget {
                       value: controller.selectedGender,
                     ),
                     const SizedBox(height: 32.0),
-                    PrimaryButton(buttonText: "Create Account", onTap: () {}),
+                    PrimaryButton(
+                        buttonText: "Create Account",
+                        onTap: controller.onCreateAccountClick),
                     const SizedBox(height: 20.0),
                     const Text(
                       "By tapping \"Create Account\",You will\n accept all Terms & Conditions",

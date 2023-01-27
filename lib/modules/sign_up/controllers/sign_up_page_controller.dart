@@ -1,5 +1,6 @@
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:mms_assignment/routes/app_routes.dart';
 
 class SignUpPageController extends GetxController {
   DateTime? pickedDate;
@@ -20,5 +21,9 @@ class SignUpPageController extends GetxController {
   onGenderSelect(String value) {
     selectedGender = value;
     update();
+  }
+
+  onCreateAccountClick() {
+    Get.toNamed(AppRoutes.otp);
   }
 }

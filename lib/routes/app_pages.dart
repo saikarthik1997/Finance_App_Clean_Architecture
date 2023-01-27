@@ -1,6 +1,8 @@
 import 'package:get/route_manager.dart';
 import 'package:mms_assignment/modules/home/bindings/home_page_bindings.dart';
 import 'package:mms_assignment/modules/home/views/home_page_view.dart';
+import 'package:mms_assignment/modules/otp/bindings/otp_bindings.dart';
+import 'package:mms_assignment/modules/otp/views/otp_page_view.dart';
 import 'package:mms_assignment/modules/sign_in/bindings/sign_in_bindings.dart';
 import 'package:mms_assignment/modules/sign_in/views/sign_in_page_view.dart';
 import 'package:mms_assignment/modules/sign_up/bindings/sign_up_bindings.dart';
@@ -30,6 +32,11 @@ class AppPages {
       name: AppRoutes.welcome,
       page: () => const WelcomePageView(),
       binding: WelcomePageBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.otp,
+      page: () => const OtpPageView(),
+      binding: OtpBinding(),
     ),
   ];
 }
