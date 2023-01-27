@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 class OtpPageController extends GetxController {
   late FocusNode focusNode;
   late TextEditingController pinTextController;
+  bool showCreatedSuccessView = false;
   @override
   void onInit() {
     focusNode = FocusNode();
@@ -19,6 +20,11 @@ class OtpPageController extends GetxController {
   }
 
   void onOtpChanged(String? val) {
+    update();
+  }
+
+  onSubmitPress() {
+    showCreatedSuccessView = true;
     update();
   }
 }
