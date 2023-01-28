@@ -9,11 +9,11 @@ class HomeRepository extends IHomeRepository {
   final Dio apiClient;
   HomeRepository({required this.apiClient});
   @override
-  Future<Either<String, HomeDataResponse>> fetchHomeData() async {
+  Future<Either<String, HomeDataModel>> fetchHomeData() async {
     try {
       Response response = await apiClient.get(ApiEndPoints.homeDataUrl);
       if (response.statusCode == 200) {
-        return right(HomeDataResponse.fromJson(response.data));
+        return right(HomeDataModel.fromJson(response.data));
       } else {
         return left(response.statusMessage ?? CommonStrings.somethingWrong);
       }

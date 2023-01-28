@@ -15,7 +15,7 @@ class HomePageController extends GetxController
   bool loading = false;
   bool errorState = false;
   String? errorMessage;
-  HomeDataResponse? homeData;
+  HomeDataModel? homeData;
 
   @override
   void onInit() {
@@ -27,8 +27,7 @@ class HomePageController extends GetxController
   fetchData() async {
     loading = true;
     update();
-    Either<String, HomeDataResponse> result =
-        await homeRepository.fetchHomeData();
+    Either<String, HomeDataModel> result = await homeRepository.fetchHomeData();
     result.fold((l) {
       errorState = true;
       errorMessage = l;

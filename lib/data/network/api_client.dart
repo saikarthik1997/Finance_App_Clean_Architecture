@@ -9,8 +9,10 @@ class ApiClient {
     debugPrint("intiialize dio called");
     final dioInstance = Dio();
     //adding timeouts
-    dioInstance.options =
-        BaseOptions(connectTimeout: 30000, receiveTimeout: 30000);
+    dioInstance.options = BaseOptions(
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+        responseType: ResponseType.json);
     if (kDebugMode) {
       //for logging
       dioInstance.interceptors.add(PrettyDioLogger());

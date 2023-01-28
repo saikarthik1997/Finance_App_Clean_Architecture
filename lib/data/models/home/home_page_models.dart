@@ -1,12 +1,12 @@
 class HomeDataResponse {
   int? statusCode;
-  Data? data;
+  HomeDataModel? data;
 
   HomeDataResponse({this.statusCode, this.data});
 
   HomeDataResponse.fromJson(Map<String, dynamic> json) {
     statusCode = json['statusCode'];
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? HomeDataModel.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -19,14 +19,14 @@ class HomeDataResponse {
   }
 }
 
-class Data {
+class HomeDataModel {
   String? name;
   List<TilesData>? tilesData;
   List<ServicesData>? servicesData;
 
-  Data({this.name, this.tilesData, this.servicesData});
+  HomeDataModel({this.name, this.tilesData, this.servicesData});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  HomeDataModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     if (json['tiles_data'] != null) {
       tilesData = <TilesData>[];
