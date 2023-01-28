@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mms_assignment/common/values/app_colors.dart';
 import 'package:mms_assignment/common/values/app_images.dart';
+import 'package:mms_assignment/common/widgets/buttons.dart';
 import 'package:mms_assignment/modules/home/controllers/home_page_controller.dart';
 
 class HomePageView extends StatelessWidget {
@@ -77,7 +78,7 @@ class HomePageView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 160.0,
+                height: 200.0,
                 child: ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   separatorBuilder: (context, index) {
@@ -88,11 +89,30 @@ class HomePageView extends StatelessWidget {
                   itemCount: 2,
                   itemBuilder: (context, index) {
                     return Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 40.0,
+                            ),
+                            Text("Wallet"),
+                            const SizedBox(height: 16.0),
+                            Text("234\$"),
+                            const SizedBox(
+                              height: 40.0,
+                            ),
+                            SizedBox(
+                              width: 150.0,
+                              child: PrimaryButton(
+                                  buttonText: "Withdraw Funds", onTap: () {}),
+                            )
+                          ]),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
                         image: const DecorationImage(
                           image: AssetImage(AppImages.loanBgImage),
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                         ),
                       ),
                       width: 300.0,
