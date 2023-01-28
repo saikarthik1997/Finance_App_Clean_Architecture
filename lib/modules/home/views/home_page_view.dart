@@ -10,6 +10,22 @@ class HomePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomePageController>(builder: (controller) {
       return Scaffold(
+        backgroundColor: Colors.white,
+        drawer: const Drawer(),
+        appBar: AppBar(
+          actions: const [
+            Icon(Icons.notifications_outlined),
+            SizedBox(width: 20.0)
+          ],
+          title: const Text("Hello Jeremy"),
+          //  toolbarHeight: 30,
+          //  titleSpacing: 20,
+          centerTitle: false,
+          titleTextStyle: const TextStyle(color: Colors.black),
+          iconTheme: const IconThemeData(color: AppColors.primaryColor),
+          backgroundColor: Colors.white,
+          shadowColor: Colors.transparent,
+        ),
         bottomNavigationBar: SafeArea(
           child: Stack(
             children: [
@@ -18,10 +34,11 @@ class HomePageView extends StatelessWidget {
                 child: Container(
                   height: 1.0,
                   width: Get.width,
-                  color: Colors.black,
+                  color: Colors.grey,
                 ),
               ),
               TabBar(
+                labelPadding: const EdgeInsets.only(top: 8.0),
                 controller: controller.tabController,
                 unselectedLabelColor: Colors.grey,
                 indicator: const BoxDecoration(
@@ -31,10 +48,26 @@ class HomePageView extends StatelessWidget {
                 labelColor: AppColors.primaryColor,
                 onTap: (index) {},
                 tabs: const [
-                  Tab(icon: Icon(Icons.menu_rounded)),
-                  Tab(icon: Icon(Icons.piano)),
-                  Tab(icon: Icon(Icons.car_rental_rounded)),
-                  Tab(icon: Icon(Icons.settings_rounded)),
+                  Tab(
+                    icon: Icon(Icons.menu_rounded),
+                    text: "Home",
+                  ),
+                  Tab(
+                    icon: Icon(Icons.piano),
+                    text: "Investment",
+                  ),
+                  Tab(
+                    icon: Icon(Icons.car_rental_rounded),
+                    text: "Payment",
+                  ),
+                  Tab(
+                    icon: Icon(Icons.settings_rounded),
+                    text: "Credit",
+                  ),
+                  Tab(
+                    icon: Icon(Icons.settings_rounded),
+                    text: "Profile",
+                  ),
                 ],
               ),
             ],
@@ -42,10 +75,57 @@ class HomePageView extends StatelessWidget {
         ),
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 160.0,
+                child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(width: 24.0);
+                  },
+                  padding: const EdgeInsets.only(left: 24.0),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return Container(width: 300.0, color: Colors.red);
+                  },
+                ),
+              ),
               Expanded(
-                child: Container(
-                  child: Text("Home Page"),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 16.0),
+                          const Text("Services"),
+                          const SizedBox(height: 16.0),
+                          Expanded(
+                            child: GridView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: 6,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3,
+                                      crossAxisSpacing: 24.0,
+                                      mainAxisSpacing: 24.0),
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  height: 50.0,
+                                  color: Colors.red,
+                                  width: 50.0,
+                                );
+                              },
+                            ),
+                          )
+                        ],
+                      ),
+                    )),
+                  ],
                 ),
               ),
             ],
