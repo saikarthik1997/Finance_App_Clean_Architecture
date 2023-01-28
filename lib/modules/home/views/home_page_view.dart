@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mms_assignment/common/values/app_colors.dart';
+import 'package:mms_assignment/common/values/app_images.dart';
 import 'package:mms_assignment/modules/home/controllers/home_page_controller.dart';
 
 class HomePageView extends StatelessWidget {
@@ -18,8 +19,6 @@ class HomePageView extends StatelessWidget {
             SizedBox(width: 20.0)
           ],
           title: const Text("Hello Jeremy"),
-          //  toolbarHeight: 30,
-          //  titleSpacing: 20,
           centerTitle: false,
           titleTextStyle: const TextStyle(color: Colors.black),
           iconTheme: const IconThemeData(color: AppColors.primaryColor),
@@ -88,7 +87,16 @@ class HomePageView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: 2,
                   itemBuilder: (context, index) {
-                    return Container(width: 300.0, color: Colors.red);
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.0),
+                        image: const DecorationImage(
+                          image: AssetImage(AppImages.loanBgImage),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      width: 300.0,
+                    );
                   },
                 ),
               ),
