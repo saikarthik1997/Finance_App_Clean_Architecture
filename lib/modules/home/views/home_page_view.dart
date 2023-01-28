@@ -62,7 +62,16 @@ class HomePageView extends StatelessWidget {
             Icon(Icons.notifications_outlined),
             SizedBox(width: 20.0)
           ],
-          title: controller.loading ? null : const Text("Hello Jeremy"),
+          titleSpacing: 8.0,
+          title: controller.loading
+              ? null
+              : Text(
+                  "Hello ${controller.homeData?.name ?? ""}",
+                  style: const TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
           centerTitle: false,
           titleTextStyle: const TextStyle(color: Colors.black),
           iconTheme: const IconThemeData(color: AppColors.primaryColor),
@@ -131,6 +140,7 @@ class HomePageView extends StatelessWidget {
                   : Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const SizedBox(height: 8.0),
                         SizedBox(
                           height: 200.0,
                           child: ListView.separated(
@@ -157,7 +167,7 @@ class HomePageView extends StatelessWidget {
                                     fit: BoxFit.fill,
                                   ),
                                 ),
-                                width: 300.0,
+                                width: 325.0,
                                 child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -201,14 +211,22 @@ class HomePageView extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              const SizedBox(height: 8.0),
                               Expanded(
                                   child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 24.0),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const SizedBox(height: 16.0),
-                                    const Text("Services"),
+                                    const Text(
+                                      "Services",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                     const SizedBox(height: 16.0),
                                     Expanded(
                                       child: GridView.builder(
@@ -218,13 +236,30 @@ class HomePageView extends StatelessWidget {
                                         gridDelegate:
                                             const SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 3,
-                                                crossAxisSpacing: 24.0,
-                                                mainAxisSpacing: 24.0),
+                                                crossAxisSpacing: 20.0,
+                                                mainAxisSpacing: 20.0),
                                         itemBuilder: (context, index) {
-                                          return Container(
-                                            height: 50.0,
-                                            color: Colors.red,
-                                            width: 50.0,
+                                          ServicesData? item = controller
+                                              .homeData?.servicesData?[index];
+                                          return Card(
+                                            elevation: 2,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        10.0)),
+                                            child: Center(
+                                                child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                const Icon(Icons.phone),
+                                                const SizedBox(height: 8.0),
+                                                Text(
+                                                  item?.displayLabel ?? "",
+                                                  style: const TextStyle(
+                                                      color: Colors.grey),
+                                                )
+                                              ],
+                                            )),
                                           );
                                         },
                                       ),
