@@ -13,14 +13,24 @@ class AccCreatedSuccessView extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(
-            height: 50.0,
+            height: 100.0,
           ),
-          const Text("Account Created"),
+          const Text(
+            "Account Created",
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 16.0),
-          const Text("Congratulations. Your account has been created"),
+          const Text(
+            "Congratulations. Your account has been created",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 16.0),
           const Text(
             "Please click on the 'Continue' button to\nget into app and start taking charge of your finances",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 100.0),
