@@ -87,7 +87,11 @@ class SignInPageView extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 36.0),
-                  PrimaryButton(buttonText: "Sign In", onTap: () {}),
+                  PrimaryButton(
+                      buttonText: "Sign In",
+                      onTap: () {
+                        Get.offAllNamed(AppRoutes.home);
+                      }),
                   const SizedBox(height: 24.0),
                   Row(
                     mainAxisSize: MainAxisSize.min,

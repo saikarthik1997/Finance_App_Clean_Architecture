@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mms_assignment/common/values/app_colors.dart';
 import 'package:mms_assignment/common/values/app_images.dart';
@@ -94,30 +95,37 @@ class HomePageView extends StatelessWidget {
                 controller: controller.tabController,
                 unselectedLabelColor: Colors.grey,
                 indicator: const BoxDecoration(
-                    border: Border(
-                  top: BorderSide(color: AppColors.primaryColor, width: 5.0),
-                )),
+                  border: Border(
+                    top: BorderSide(color: AppColors.primaryColor, width: 5.0),
+                  ),
+                ),
                 labelColor: AppColors.primaryColor,
                 onTap: (index) {},
-                tabs: const [
-                  Tab(
-                    icon: Icon(Icons.menu_rounded),
+                tabs: [
+                  const Tab(
+                    icon: Icon(Icons.home_outlined),
                     text: "Home",
                   ),
                   Tab(
-                    icon: Icon(Icons.piano),
+                    icon: Image.asset(
+                      AppImages.investmentImage,
+                      height: 23.0,
+                    ),
                     text: "Investment",
                   ),
                   Tab(
-                    icon: Icon(Icons.car_rental_rounded),
+                    icon: Image.asset(
+                      AppImages.paymentImage,
+                      height: 23,
+                    ),
                     text: "Payment",
                   ),
-                  Tab(
-                    icon: Icon(Icons.settings_rounded),
+                  const Tab(
+                    icon: Icon(Icons.credit_card),
                     text: "Credit",
                   ),
-                  Tab(
-                    icon: Icon(Icons.settings_rounded),
+                  const Tab(
+                    icon: Icon(Icons.person_outline),
                     text: "Profile",
                   ),
                 ],
@@ -251,8 +259,34 @@ class HomePageView extends StatelessWidget {
                                                 child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                const Icon(Icons.phone),
-                                                const SizedBox(height: 8.0),
+                                                Builder(
+                                                  builder: (context) {
+                                                    String appImgPath =
+                                                        controller.getImgSrc(
+                                                            item?.displayLabel ??
+                                                                "");
+                                                    if (item?.displayLabel ==
+                                                        "Cards") {
+                                                      return Icon(
+                                                        Icons.credit_card,
+                                                        size: 30,
+                                                      );
+                                                    }
+                                                    if (appImgPath
+                                                        .endsWith('.svg')) {
+                                                      return SvgPicture.asset(
+                                                        appImgPath,
+                                                        height: 30.0,
+                                                      );
+                                                    } else {
+                                                      return Image.asset(
+                                                        appImgPath,
+                                                        height: 30.0,
+                                                      );
+                                                    }
+                                                  },
+                                                ),
+                                                const SizedBox(height: 16.0),
                                                 Text(
                                                   item?.displayLabel ?? "",
                                                   style: const TextStyle(

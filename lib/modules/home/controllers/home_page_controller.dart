@@ -49,4 +49,21 @@ class HomePageController extends GetxController
         return AppImages.loanBgImage;
     }
   }
+
+  getImgSrc(String title) {
+    switch (title) {
+      case "Fund":
+        return AppImages.fundsImage;
+      case "Send Money":
+        return AppImages.sendMoneySvg;
+      case "Bank Transfer":
+        return AppImages.bankTransferImage;
+      case "Loan Request":
+        return AppImages.loanRequestImage;
+      case "Airtime":
+        return AppImages.airtimeImage;
+      case "Cards":
+        return AppImages.cardsImage;
+    }
+  }
 }
