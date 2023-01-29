@@ -18,6 +18,7 @@ class CustomDropdown extends StatelessWidget {
       isExpanded: true,
       itemHeight: 55,
       iconSize: 0.0,
+      underline: SizedBox(),
       hint: Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),

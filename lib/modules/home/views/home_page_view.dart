@@ -36,7 +36,7 @@ class HomePageView extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.offAllNamed(AppRoutes.welcome);
+                    Get.offAllNamed(AppRoutes.signIn);
                   },
                   child: Row(
                     children: const [
@@ -152,6 +152,7 @@ class HomePageView extends StatelessWidget {
                         SizedBox(
                           height: 200.0,
                           child: ListView.separated(
+                            controller: controller.scrollController,
                             physics: const BouncingScrollPhysics(),
                             separatorBuilder: (context, index) {
                               return const SizedBox(width: 24.0);
@@ -191,12 +192,35 @@ class HomePageView extends StatelessWidget {
                                             fontSize: 16.0),
                                       ),
                                       const SizedBox(height: 16.0),
-                                      Text(
-                                        "${item?.value} ${item?.currency}",
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 26.0),
+                                      Builder(
+                                        builder: (context) {
+                                          List<String>? decimalSplit =
+                                              item?.value?.split('.');
+                                          String? firstHalf = decimalSplit?[0];
+                                          String? secHalf = decimalSplit?[1];
+                                          return Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                "${item?.currency} ${firstHalf}",
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 26.0),
+                                              ),
+                                              if (secHalf != null)
+                                                Text(
+                                                  ".$secHalf",
+                                                  style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 20.0),
+                                                )
+                                            ],
+                                          );
+                                        },
                                       ),
                                       const SizedBox(
                                         height: 30.0,
@@ -249,12 +273,20 @@ class HomePageView extends StatelessWidget {
                                         itemBuilder: (context, index) {
                                           ServicesData? item = controller
                                               .homeData?.servicesData?[index];
-                                          return Card(
-                                            elevation: 2,
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        10.0)),
+                                          return Container(
+                                            decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                                shape: BoxShape.rectangle,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(16.0)),
+                                                boxShadow: <BoxShadow>[
+                                                  BoxShadow(
+                                                    color: AppColors
+                                                        .cardShadowColor,
+                                                    blurRadius: 8.0,
+                                                    offset: Offset(0.0, 0.0),
+                                                  )
+                                                ]),
                                             child: Center(
                                                 child: Column(
                                               mainAxisSize: MainAxisSize.min,

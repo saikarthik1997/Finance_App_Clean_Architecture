@@ -11,6 +11,7 @@ class HomePageController extends GetxController
   final IHomeRepository homeRepository;
   HomePageController(this.homeRepository);
   late final TabController tabController;
+  late ScrollController scrollController;
   int currentIndex = 0;
   bool loading = false;
   bool errorState = false;
@@ -19,6 +20,7 @@ class HomePageController extends GetxController
 
   @override
   void onInit() {
+    scrollController = ScrollController();
     tabController = TabController(length: 5, vsync: this);
     fetchData();
     super.onInit();
@@ -34,6 +36,10 @@ class HomePageController extends GetxController
     }, (r) {
       homeData = r;
       errorState = false;
+      Future.delayed(const Duration(milliseconds: 500), () {
+        scrollController.animateTo(300,
+            duration: const Duration(milliseconds: 100), curve: Curves.easeIn);
+      });
     });
     loading = false;
     update();
