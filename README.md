@@ -1,6 +1,6 @@
-# mms_assignment
+# Finance App Flutter(Clean Architecture)
 
-MMS Assignment Project
+Finance Application using Getx , Dio , clean architecture principles
 
 ## Getting Started
 
